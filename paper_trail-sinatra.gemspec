@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = ::PaperTrail::Sinatra::VERSION
   spec.authors       = ["Jared Beck"]
   spec.email         = ["jared@jaredbeck.com"]
-
+  spec.licenses = ["GPL-3.0"]
   spec.summary       = 'Sinatra support for paper_trail'
   spec.homepage      = 'https://github.com/jaredbeck/paper_trail-sinatra'
 
@@ -35,6 +35,7 @@ Gem::Specification.new do |spec|
   # https://github.com/airblade/paper_trail/issues/856
   spec.add_dependency "sinatra", "< 2"
 
-  spec.add_development_dependency "rack-test"
-  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "rack-test", "~> 0.6"
+  spec.add_development_dependency "rspec", "~> 3.5"
+  spec.add_development_dependency "sqlite3", "~> 1.3"
 end
