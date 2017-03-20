@@ -16,7 +16,10 @@ setting up your app with PaperTrail will look something like this:
 
 1. Add PaperTrail to your `Gemfile`.
 
-  `gem 'paper_trail'`
+```
+gem 'paper_trail'
+gem 'paper_trail-sinatra'
+```
 
 2. Generate a migration to add a `versions` table to your database.
 
