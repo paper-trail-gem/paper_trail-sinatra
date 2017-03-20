@@ -52,3 +52,14 @@ class BlehApp < Sinatra::Base
   register PaperTrail::Sinatra
 end
 ```
+
+## Contributing
+
+```
+git clone
+bundle
+mkdir db
+sqlite3 db/test.sqlite3
+.read spec/create_db.sql
+bundle exec rspec
+```
