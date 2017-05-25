@@ -17,12 +17,19 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 end
 
+def active_record_version
+  Gem::Version.new(ActiveRecord::VERSION::STRING)
+end
+
 require "sinatra/main"
 require "yaml"
 require "active_record"
-ActiveRecord::Base.raise_in_transactional_callbacks = true
+if active_record_version < Gem::Version.new("5.0.0")
+  ActiveRecord::Base.raise_in_transactional_callbacks = true
+end
 require "rack/test"
 require "paper_trail/config"
 PaperTrail::Config.instance.track_associations = false
 require "paper_trail"
+require "paper_trail/sinatra"
 require_relative "models/widget"

@@ -7,10 +7,6 @@ module Sinatra
     ActiveRecord::Base.configurations = configs
     ActiveRecord::Base.establish_connection(:test)
 
-    # We shouldn't actually need this line if I'm not mistaken but the tests
-    # seem to fail without it ATM
-    register PaperTrail::Sinatra
-
     get "/test" do
       Widget.create!(name: "bar")
       "Hai"
