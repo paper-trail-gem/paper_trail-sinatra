@@ -25,9 +25,9 @@ Gem::Specification.new do |spec|
 
   # This gem should # not be used with PT < 7 because both define
   # `::PaperTrail::Sinatra`.
-  spec.add_dependency "paper_trail", ">= 7"
+  spec.add_dependency "paper_trail", "~> 7"
 
-  spec.add_dependency "sinatra", ">= 1.0.0"
+  spec.add_dependency "sinatra", [">= 1.0.0", "<= 2"]
   spec.add_development_dependency "rack-test", "~> 0.6"
   spec.add_development_dependency "rspec", "~> 3.5"
   spec.add_development_dependency "sqlite3", "~> 1.3"
