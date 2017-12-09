@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   # `::PaperTrail::Sinatra`.
   spec.add_dependency "paper_trail", [">= 7", "< 9"]
 
-  spec.add_dependency "sinatra", [">= 1.0.0", "<= 2"]
+  spec.add_dependency "sinatra", [">= 1.0.0", "< 3"]
   spec.add_development_dependency "rack-test", "~> 0.6"
   spec.add_development_dependency "rspec", "~> 3.5"
   spec.add_development_dependency "sqlite3", "~> 1.3"
