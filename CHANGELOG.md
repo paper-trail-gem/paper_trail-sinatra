@@ -1,6 +1,6 @@
 # Change Log
 
-## Unreleased
+## 0.3.0 (2017-12-10)
 
 Breaking Changes
 
@@ -8,13 +8,15 @@ Breaking Changes
 
 Added
 
-- None
+- Update dependency constraints
+  - paper_trail >= 7, < 9
+  - sinatra >= 1.0.0, < 3
 
 Fixed
 
 - None
 
-## 0.2.0 2017-05-25
+## 0.2.0 (2017-05-25)
 
 Breaking Changes
 
@@ -28,6 +30,6 @@ Fixed
 
 - None
 
-## 0.1.0 2017-03-20
+## 0.1.0 (2017-03-20)
 
 Initial release
