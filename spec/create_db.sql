@@ -9,8 +9,8 @@ We don't need to test against other RDBMS, sqlite is fine. Still, migrations
 provide some convenient methods.
 */
 
-drop table versions;
-drop table widgets;
+drop table if exists versions;
+drop table if exists widgets;
 
 create table versions (
   id integer primary key,
@@ -21,7 +21,9 @@ create table versions (
   object varchar,
   object_changes varchar,
   transaction_id integer,
-  created_at datetime
+  created_at datetime,
+  ip varchar,
+  user_agent varchar
 );
 
 create table widgets (

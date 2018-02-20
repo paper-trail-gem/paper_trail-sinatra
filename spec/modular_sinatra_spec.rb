@@ -15,6 +15,10 @@ class BaseApp < Sinatra::Base
   def current_user
     @current_user ||= OpenStruct.new(id: "foobar")
   end
+
+  def info_for_paper_trail
+    { ip: request.ip, user_agent: request.user_agent }
+  end
 end
 
 RSpec.describe "modular-style sinatra application" do
@@ -25,11 +29,15 @@ RSpec.describe "modular-style sinatra application" do
   end
 
   it "baseline" do
-    expect(Widget.create.versions.first.whodunnit).to be_nil
+    widget = Widget.create.versions.first
+    expect(widget.whodunnit).to be_nil
+    expect(widget.ip).to be_nil
+    expect(widget.user_agent).to be_nil
   end
 
   context "`PaperTrail::Sinatra` in a `Sinatra::Base` application" do
-    it "sets the `user_for_paper_trail` from the `current_user` method" do
+    it "sets the `user_for_paper_trail` from the `current_user` method, also sets `info_for_paper_trail`" do
+      env "HTTP_USER_AGENT", "mozilla"
       get "/test"
       expect(last_response.body).to eq("Hello")
       widget = Widget.last
@@ -37,6 +45,8 @@ RSpec.describe "modular-style sinatra application" do
       expect(widget.name).to eq("foo")
       expect(widget.versions.size).to eq(1)
       expect(widget.versions.first.whodunnit).to eq("foobar")
+      expect(widget.versions.first.ip).to eq("127.0.0.1")
+      expect(widget.versions.first.user_agent).to eq("mozilla")
     end
   end
 end

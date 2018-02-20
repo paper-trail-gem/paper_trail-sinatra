@@ -10,7 +10,10 @@ module PaperTrail
     def self.registered(app)
       app.use RequestStore::Middleware
       app.helpers self
-      app.before { set_paper_trail_whodunnit }
+      app.before {
+        set_paper_trail_whodunnit
+        set_paper_trail_request_info
+      }
     end
 
     protected
@@ -27,12 +30,21 @@ module PaperTrail
       current_user
     end
 
+    def info_for_paper_trail
+      {}
+    end
+
     private
 
     # Tells PaperTrail who is responsible for any changes that occur.
     def set_paper_trail_whodunnit
       @set_paper_trail_whodunnit_called = true
       ::PaperTrail.whodunnit = user_for_paper_trail if ::PaperTrail.enabled?
+    end
+
+    def set_paper_trail_request_info
+      @set_paper_trail_request_info_called = true
+      ::PaperTrail.controller_info = info_for_paper_trail
     end
   end
 end
