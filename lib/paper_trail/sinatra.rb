@@ -49,12 +49,12 @@ module PaperTrail
 
     def set_paper_trail_request_info
       @set_paper_trail_request_info_called = true
-      ::PaperTrail.controller_info = info_for_paper_trail
+      ::PaperTrail.controller_info = info_for_paper_trail if ::PaperTrail.enabled?
     end
 
     def set_paper_trail_enabled_for_request
       @set_paper_trail_enabled_for_request_called = true
-      ::PaperTrail.enabled_for_controller = paper_trail_enabled_for_request
+      ::PaperTrail.enabled_for_controller = paper_trail_enabled_for_request if ::PaperTrail.enabled?
     end
   end
 end
