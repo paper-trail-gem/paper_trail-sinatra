@@ -13,6 +13,7 @@ module PaperTrail
       app.before {
         set_paper_trail_whodunnit
         set_paper_trail_request_info
+        set_paper_trail_enabled_for_request
       }
     end
 
@@ -34,6 +35,10 @@ module PaperTrail
       {}
     end
 
+    def paper_trail_enabled_for_request
+      ::PaperTrail.enabled?
+    end
+
     private
 
     # Tells PaperTrail who is responsible for any changes that occur.
@@ -45,6 +50,11 @@ module PaperTrail
     def set_paper_trail_request_info
       @set_paper_trail_request_info_called = true
       ::PaperTrail.controller_info = info_for_paper_trail
+    end
+
+    def set_paper_trail_enabled_for_request
+      @set_paper_trail_enabled_for_request_called = true
+      ::PaperTrail.enabled_for_controller = paper_trail_enabled_for_request
     end
   end
 end

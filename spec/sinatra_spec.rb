@@ -19,6 +19,10 @@ module Sinatra
     def info_for_paper_trail
       { ip: request.ip, user_agent: request.user_agent }
     end
+
+    def paper_trail_enabled_for_request
+      request.user_agent =~ /chrome/
+    end
   end
 end
 
@@ -30,7 +34,7 @@ RSpec.describe "classic sinatra application" do
   end
 
   context "`PaperTrail::Sinatra` in a `Sinatra::Application` application" do
-    it "sets the `user_for_paper_trail` from the `current_user` method, also sets `info_for_paper_trail`" do
+    it "sets the `user_for_paper_trail` from the `current_user` method, also sets `info_for_paper_trail` and `paper_trail_enabled_for_request`" do
       env "HTTP_USER_AGENT", "chrome"
       env "HTTP_X_FORWARDED_FOR", "8.8.8.8"
       get "/test"
@@ -42,6 +46,15 @@ RSpec.describe "classic sinatra application" do
       expect(widget.versions.first.whodunnit).to eq("raboof")
       expect(widget.versions.first.ip).to eq("8.8.8.8")
       expect(widget.versions.first.user_agent).to eq("chrome")
+
+      # change user agent
+      env "HTTP_USER_AGENT", "webkit"
+      get "/test"
+      expect(last_response.body).to eq("Hai")
+      widget2 = Widget.last
+      expect(widget2).to_not be_nil
+      expect(widget2.name).to eq("bar")
+      expect(widget2.versions.size).to eq(0)
     end
   end
 end

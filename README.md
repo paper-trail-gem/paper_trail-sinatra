@@ -45,6 +45,9 @@ user_for_paper_trail
 # Returns any information about the controller or request that you want
 # PaperTrail to store alongside any changes that occur.
 info_for_paper_trail
+
+# Turn PaperTrail off for per request
+paper_trail_enabled_for_request
 ```
 
 If you're using the modular [`Sinatra::Base`][4] style of application, you will
