@@ -4,7 +4,7 @@
 
 Breaking Changes
 
-- None
+- Drop support for activesupport < 4.2
 
 Added
 

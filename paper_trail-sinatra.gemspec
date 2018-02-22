@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   # in this project, but it's helpful for local development.
   spec.required_ruby_version = ">= 2.1.0"
 
-  spec.add_dependency "activesupport", [">= 4.0", "< 6"]
+  spec.add_dependency "activesupport", [">= 4.2", "< 6"]
 
   spec.add_dependency "bundler", "~> 1.13"
 
