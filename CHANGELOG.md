@@ -4,7 +4,8 @@
 
 Breaking Changes
 
-- Drop support for activesupport < 4.2
+- Drop support for activesupport < 4.2 (EoL)
+- Drop support for ruby < 2.2 (EoL, and required by sinatra 2)
 
 Added
 

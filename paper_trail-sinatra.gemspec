@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
 
   # PT 7 requires ruby >= 2.1.0. We don't technically need the same constraint
   # in this project, but it's helpful for local development.
-  spec.required_ruby_version = ">= 2.1.0"
+  spec.required_ruby_version = ">= 2.2.0"
 
   spec.add_dependency "activesupport", [">= 4.2", "< 6"]
 
