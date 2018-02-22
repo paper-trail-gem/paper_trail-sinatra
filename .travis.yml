@@ -1,0 +1,17 @@
+language: ruby
+cache: bundler
+
+# For ruby compatibility, we test the highest and lowest minor versions only.
+rvm:
+  - 2.5.0
+  - 2.1.10
+
+sudo: false
+
+before_script:
+  - mkdir db
+  - touch db/test.sqlite3
+  - sqlite3 db/test.sqlite3 < spec/create_db.sql
+
+script:
+  - bundle exec rspec
