@@ -46,7 +46,7 @@ user_for_paper_trail
 # PaperTrail to store alongside any changes that occur.
 info_for_paper_trail
 
-# Turn PaperTrail off for per request
+# Returns `true` (default) or `false` to turn PaperTrail on/off for per request.
 paper_trail_enabled_for_request
 ```
 
