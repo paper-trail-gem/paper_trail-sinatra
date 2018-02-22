@@ -8,7 +8,9 @@ Breaking Changes
 
 Added
 
-- None
+- Two functions inherit from rails
+  - info_for_paper_trail
+  - paper_trail_enabled_for_request
 
 Fixed
 

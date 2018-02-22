@@ -21,7 +21,9 @@ create table versions (
   object varchar,
   object_changes varchar,
   transaction_id integer,
-  created_at datetime
+  created_at datetime,
+  ip varchar,
+  user_agent varchar
 );
 
 create table widgets (

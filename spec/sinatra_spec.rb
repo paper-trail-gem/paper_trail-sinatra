@@ -15,6 +15,14 @@ module Sinatra
     def current_user
       @current_user ||= OpenStruct.new(id: "raboof")
     end
+
+    def info_for_paper_trail
+      { ip: request.ip, user_agent: request.user_agent }
+    end
+
+    def paper_trail_enabled_for_request
+      request.user_agent.to_s =~ /^(?!webkit)/
+    end
   end
 end
 
@@ -34,6 +42,30 @@ RSpec.describe "classic sinatra application" do
       expect(widget.name).to eq("bar")
       expect(widget.versions.size).to eq(1)
       expect(widget.versions.first.whodunnit).to eq("raboof")
+    end
+
+    it "sets `info_for_paper_trail`" do
+      env "HTTP_USER_AGENT", "chrome"
+      env "HTTP_X_FORWARDED_FOR", "8.8.8.8"
+      get "/test"
+      expect(last_response.body).to eq("Hai")
+      widget = Widget.last
+      expect(widget).to_not be_nil
+      expect(widget.name).to eq("bar")
+      expect(widget.versions.size).to eq(1)
+      expect(widget.versions.first.whodunnit).to eq("raboof")
+      expect(widget.versions.first.ip).to eq("8.8.8.8")
+      expect(widget.versions.first.user_agent).to eq("chrome")
+    end
+
+    it "sets `paper_trail_enabled_for_request`" do
+      env "HTTP_USER_AGENT", "webkit"
+      get "/test"
+      expect(last_response.body).to eq("Hai")
+      widget = Widget.last
+      expect(widget).to_not be_nil
+      expect(widget.name).to eq("bar")
+      expect(widget.versions.size).to eq(0)
     end
   end
 end

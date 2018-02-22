@@ -32,12 +32,23 @@ into the `create_versions` migration that was generated into your `db/migrate` d
 
 5. Add `has_paper_trail` to the models you want to track.
 
-PaperTrail provides a helper extension that acts similar to the controller mixin
+PaperTrail provides some helper extensions that acts similar to the controller mixin
 it provides for `Rails` applications.
 
-It will set `PaperTrail.whodunnit` to whatever is returned by a method named
-`user_for_paper_trail` which you can define inside your Sinatra Application. (by
-default it attempts to invoke a method named `current_user`)
+In your helpers you can override these methods:
+
+```ruby
+# Returns the user who is responsible for any changes that occur.
+# Defaults to current_user.
+user_for_paper_trail
+
+# Returns any information about the controller or request that you want
+# PaperTrail to store alongside any changes that occur.
+info_for_paper_trail
+
+# Returns `true` (default) or `false` to turn PaperTrail on/off for per request.
+paper_trail_enabled_for_request
+```
 
 If you're using the modular [`Sinatra::Base`][4] style of application, you will
 need to register the extension:
