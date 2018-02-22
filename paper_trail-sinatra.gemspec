@@ -4,19 +4,17 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'paper_trail/sinatra/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "paper_trail-sinatra"
-  spec.version       = ::PaperTrail::Sinatra::VERSION
-  spec.authors       = ["Jared Beck"]
-  spec.email         = ["jared@jaredbeck.com"]
+  spec.name = "paper_trail-sinatra"
+  spec.version = ::PaperTrail::Sinatra::VERSION
+  spec.authors = ["Jared Beck"]
+  spec.email = ["jared@jaredbeck.com"]
   spec.licenses = ["GPL-3.0"]
-  spec.summary       = 'Sinatra support for paper_trail'
-  spec.homepage      = 'https://github.com/jaredbeck/paper_trail-sinatra'
-
-  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
+  spec.summary = 'Sinatra support for paper_trail'
+  spec.homepage = 'https://github.com/jaredbeck/paper_trail-sinatra'
+  spec.files = `git ls-files -z`.split("\x0").reject do |f|
+    f.match(%r{^spec/})
   end
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.executables = []
   spec.require_paths = ["lib"]
 
   # PT 7 requires ruby >= 2.1.0. We don't technically need the same constraint
@@ -25,6 +23,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "activesupport", [">= 4.2", "< 6"]
 
+  # Why constrain bundler? Is there a better way?
   spec.add_dependency "bundler", "~> 1.13"
 
   # This gem should not be used with PT < 7 because both define

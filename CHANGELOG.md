@@ -4,12 +4,27 @@
 
 Breaking Changes
 
+- None
+
+Added
+
+- None
+
+Fixed
+
+- None
+
+## 0.4.0 (2018-02-22)
+
+Breaking Changes
+
 - Drop support for activesupport < 4.2 (EoL)
 - Drop support for ruby < 2.2 (EoL, and required by sinatra 2)
 
 Added
 
-- Two functions inherit from rails
+- [#5](https://github.com/jaredbeck/paper_trail-sinatra/pull/5) -
+  Two methods familiar to rails users
   - info_for_paper_trail
   - paper_trail_enabled_for_request
 
