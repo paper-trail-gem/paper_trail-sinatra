@@ -1,17 +1,22 @@
-language: ruby
-cache: bundler
-
-# For ruby compatibility, we test the highest and lowest minor versions only.
-rvm:
-  - 2.5.0
-  - 2.1.10
-
-sudo: false
-
+before_install:
+  - gem update --system
+  - gem update bundler
 before_script:
   - mkdir db
   - touch db/test.sqlite3
   - sqlite3 db/test.sqlite3 < spec/create_db.sql
+gemfile:
+  - spec/gemfiles/Gemfile_pt7_sinatra1.rb
+  - spec/gemfiles/Gemfile_pt7_sinatra2.rb
+  - spec/gemfiles/Gemfile_pt8_sinatra1.rb
+  - spec/gemfiles/Gemfile_pt8_sinatra2.rb
+language: ruby
+
+# For ruby compatibility, we test the highest and lowest minor versions only.
+rvm:
+  - 2.5.0
+  - 2.2.9
 
 script:
   - bundle exec rspec
+sudo: false
