@@ -21,7 +21,7 @@ class BaseApp < Sinatra::Base
   end
 
   def paper_trail_enabled_for_request
-    request.user_agent =~ /mozilla/
+    request.user_agent.to_s =~ /^(?!edge)/
   end
 end
 
@@ -40,7 +40,17 @@ RSpec.describe "modular-style sinatra application" do
   end
 
   context "`PaperTrail::Sinatra` in a `Sinatra::Base` application" do
-    it "sets the `user_for_paper_trail` from the `current_user` method, also sets `info_for_paper_trail` and `paper_trail_enabled_for_request`" do
+    it "sets the `user_for_paper_trail` from the `current_user` method" do
+      get "/test"
+      expect(last_response.body).to eq("Hello")
+      widget = Widget.last
+      expect(widget).to_not be_nil
+      expect(widget.name).to eq("foo")
+      expect(widget.versions.size).to eq(1)
+      expect(widget.versions.first.whodunnit).to eq("foobar")
+    end
+
+    it "sets `info_for_paper_trail`" do
       env "HTTP_USER_AGENT", "mozilla"
       get "/test"
       expect(last_response.body).to eq("Hello")
@@ -51,15 +61,16 @@ RSpec.describe "modular-style sinatra application" do
       expect(widget.versions.first.whodunnit).to eq("foobar")
       expect(widget.versions.first.ip).to eq("127.0.0.1")
       expect(widget.versions.first.user_agent).to eq("mozilla")
+    end
 
-      # change user agent
+    it "sets `paper_trail_enabled_for_request`" do
       env "HTTP_USER_AGENT", "edge"
       get "/test"
       expect(last_response.body).to eq("Hello")
-      widget2 = Widget.last
-      expect(widget2).to_not be_nil
-      expect(widget2.name).to eq("foo")
-      expect(widget2.versions.size).to eq(0)
+      widget = Widget.last
+      expect(widget).to_not be_nil
+      expect(widget.name).to eq("foo")
+      expect(widget.versions.size).to eq(0)
     end
   end
 end
