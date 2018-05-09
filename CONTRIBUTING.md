@@ -9,6 +9,6 @@ sqlite3 db/test.sqlite3
 bundle exec rubocop
 
 # Test specific dependency versions
-BUNDLE_GEMFILE=spec/gemfiles/pt9_sinatra2.rb bundle
-BUNDLE_GEMFILE=spec/gemfiles/pt9_sinatra2.rb bundle exec rspec
+BUNDLE_GEMFILE=gemfiles/pt9_sinatra2.rb bundle
+BUNDLE_GEMFILE=gemfiles/pt9_sinatra2.rb bundle exec rspec
 ```

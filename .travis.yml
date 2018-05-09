@@ -7,31 +7,31 @@ before_script:
   - sqlite3 db/test.sqlite3 < spec/create_db.sql
 cache: bundler
 gemfile:
-  - spec/gemfiles/pt7_sinatra1.rb
-  - spec/gemfiles/pt7_sinatra2.rb
-  - spec/gemfiles/pt8_sinatra1.rb
-  - spec/gemfiles/pt8_sinatra2.rb
-  - spec/gemfiles/pt9_sinatra1.rb
-  - spec/gemfiles/pt9_sinatra2.rb
+  - gemfiles/pt7_sinatra1.rb
+  - gemfiles/pt7_sinatra2.rb
+  - gemfiles/pt8_sinatra1.rb
+  - gemfiles/pt8_sinatra2.rb
+  - gemfiles/pt9_sinatra1.rb
+  - gemfiles/pt9_sinatra2.rb
 language: ruby
 matrix:
   exclude:
     # PT 9 requires ruby >= 2.3
     - rvm: 2.2.9
-      gemfile: spec/gemfiles/pt9_sinatra1.rb
+      gemfile: gemfiles/pt9_sinatra1.rb
     - rvm: 2.2.9
-      gemfile: spec/gemfiles/pt9_sinatra2.rb
+      gemfile: gemfiles/pt9_sinatra2.rb
 
     # We only test ruby 2.3 against PT 9. Lower versions of PT are tested
     # against ruby 2.2.
     - rvm: 2.3.7
-      gemfile: spec/gemfiles/pt7_sinatra1.rb
+      gemfile: gemfiles/pt7_sinatra1.rb
     - rvm: 2.3.7
-      gemfile: spec/gemfiles/pt7_sinatra2.rb
+      gemfile: gemfiles/pt7_sinatra2.rb
     - rvm: 2.3.7
-      gemfile: spec/gemfiles/pt8_sinatra1.rb
+      gemfile: gemfiles/pt8_sinatra1.rb
     - rvm: 2.3.7
-      gemfile: spec/gemfiles/pt8_sinatra2.rb
+      gemfile: gemfiles/pt8_sinatra2.rb
 
 # For ruby compatibility, we usually only test the highest and lowest supported
 # versions. However see above re: PT 9.
