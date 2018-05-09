@@ -1,4 +1,5 @@
 # coding: utf-8
+
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'paper_trail/sinatra/version'
@@ -28,10 +29,11 @@ Gem::Specification.new do |spec|
 
   # This gem should not be used with PT < 7 because both define
   # `::PaperTrail::Sinatra`.
-  spec.add_dependency "paper_trail", [">= 7", "< 9"]
+  spec.add_dependency "paper_trail", [">= 7", "< 10"]
 
   spec.add_dependency "sinatra", [">= 1.0.0", "< 3"]
   spec.add_development_dependency "rack-test", "~> 0.6"
-  spec.add_development_dependency "rspec", "~> 3.5"
+  spec.add_development_dependency "rspec", "~> 3.7"
+  spec.add_development_dependency "rubocop", "~> 0.55.0"
   spec.add_development_dependency "sqlite3", "~> 1.3"
 end
