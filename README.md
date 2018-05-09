@@ -62,17 +62,6 @@ class BlehApp < Sinatra::Base
 end
 ```
 
-## Contributing
-
-```
-git clone
-bundle
-mkdir db
-sqlite3 db/test.sqlite3
-.read spec/create_db.sql
-bundle exec rspec
-```
-
 [1]: http://www.sinatrarb.com
 [2]: https://github.com/janko-m/sinatra-activerecord
 [3]: https://raw.github.com/airblade/paper_trail/master/lib/generators/paper_trail/templates/create_versions.rb

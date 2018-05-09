@@ -5,6 +5,7 @@ before_script:
   - mkdir db
   - touch db/test.sqlite3
   - sqlite3 db/test.sqlite3 < spec/create_db.sql
+cache: bundler
 gemfile:
   - spec/gemfiles/Gemfile_pt7_sinatra1.rb
   - spec/gemfiles/Gemfile_pt7_sinatra2.rb
@@ -18,5 +19,6 @@ rvm:
   - 2.2.9
 
 script:
+  - bundle exec rubocop
   - bundle exec rspec
 sudo: false
