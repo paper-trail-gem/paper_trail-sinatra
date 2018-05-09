@@ -8,7 +8,7 @@ Breaking Changes
 
 Added
 
-- None
+- PaperTrail::Sinatra.gem_version
 
 Fixed
 
