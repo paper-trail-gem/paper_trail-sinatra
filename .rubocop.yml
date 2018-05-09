@@ -1,1 +1,106 @@
 inherit_from: .rubocop_todo.yml
+
+# Please:
+#
+# - Comment any deviations from the Ruby Style Guide
+# - Alphabetize cops
+# - Only include permanent config; temporary goes in .rubocop_todo.yml
+
+AllCops:
+  Exclude:
+    # This is where travis CI installs our bundle. If we don't exclude it,
+    # travis will try to lint all of our dependencies XD
+    - spec/gemfiles/vendor/bundle/**/*
+
+  # Set to lowest supported version
+  TargetRubyVersion: 2.2
+
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+# Use exactly one space on each side of an operator. Do not align operators
+# because it makes the code harder to edit, and makes lines unnecessarily long.
+Layout/SpaceAroundOperators:
+  AllowForAlignment: false
+
+# Not a useful metric compared to, e.g. `AbcSize`.
+Metrics/BlockLength:
+  Enabled: false
+
+# Not a useful metric compared to, e.g. `AbcSize`.
+Metrics/ClassLength:
+  Enabled: false
+
+# The Ruby Style Guide recommends to "Limit lines to 80 characters."
+# (https://github.com/bbatsov/ruby-style-guide#80-character-limits)
+# Please aim for 80, but up to 100 is OK.
+Metrics/LineLength:
+  Max: 100
+
+# The number of lines in a method is not a useful metric compared to `AbcSize`.
+# It's common to have very long methods (> 50 lines) which are quite simple. For
+# example, a method that returns a long string with only a few interpolations.
+Metrics/MethodLength:
+  Enabled: false
+
+# Not a useful metric compared to, e.g. `AbcSize`.
+Metrics/ModuleLength:
+  Enabled: false
+
+# Heredocs are usually assigned to a variable or constant, which already has a
+# name, so naming the heredoc doesn't add much value. Feel free to name
+# heredocs that are used as anonymous values (not a variable, constant, or
+# named parameter).
+#
+# All heredocs containing SQL should be named SQL, to support editor syntax
+# highlighting.
+Naming/HeredocDelimiterNaming:
+  Enabled: false
+
+# Too subtle to lint.
+# Two-letter param names are OK. Consider `send_email(to:, cc:)`.
+# Even one-letter names are OK. Consider `draw_point(x, y)`.
+Naming/UncommunicativeMethodParamName:
+  Enabled: false
+
+# Please use semantic style, e.g. `do` when there's a side-effect, else `{}`.
+# The semantic style is too nuanced to lint, so the cop is disabled.
+Style/BlockDelimiters:
+  Enabled: false
+
+# Use double negation wherever it would otherwise be impractical to convert
+# a value to an actual boolean.
+Style/DoubleNegation:
+  Enabled: false
+
+# Avoid annotated tokens except in desperately complicated format strings.
+# In 99% of format strings they actually make it less readable.
+Style/FormatStringToken:
+  Enabled: false
+
+# The decision of when to use a guard clause to improve readability is subtle,
+# and it's not clear that it can be linted. Certainly, the default
+# `MinBodyLength` of 1 can actually hurt readability.
+Style/GuardClause:
+  Enabled: false
+
+# Only use postfix (modifier) conditionals for utterly simple statements.
+# As a rule of thumb, the entire statement should not exceed 60 chars.
+# Rubocop used to support this level of configuration, but no longer does.
+Style/IfUnlessModifier:
+  Enabled: false
+
+# The Ruby Style Guide does not prescribe a particular quote character, only
+# that a project should pick one and be consistent. The decision has no
+# performance implications. Double quotes are slightly easier to read.
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
