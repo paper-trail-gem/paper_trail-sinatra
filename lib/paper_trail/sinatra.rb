@@ -66,19 +66,34 @@ module PaperTrail
 
     # Tells PaperTrail who is responsible for any changes that occur.
     def set_paper_trail_whodunnit
-      ::PaperTrail.whodunnit = user_for_paper_trail if ::PaperTrail.enabled?
+      return unless ::PaperTrail.enabled?
+      if ::Gem::Version.new(::PaperTrail::VERSION) >= ::Gem::Version.new('9')
+        ::PaperTrail.request.whodunnit = user_for_paper_trail
+      else
+        ::PaperTrail.whodunnit = user_for_paper_trail
+      end
     end
 
     # Tells PaperTrail any information from the controller you want to store
     # alongside any changes that occur.
     def set_paper_trail_request_info
-      ::PaperTrail.controller_info = info_for_paper_trail if ::PaperTrail.enabled?
+      return unless ::PaperTrail.enabled?
+      if ::Gem::Version.new(::PaperTrail::VERSION) >= ::Gem::Version.new('9')
+        ::PaperTrail.request.controller_info = info_for_paper_trail
+      else
+        ::PaperTrail.controller_info = info_for_paper_trail
+      end
     end
 
     # Tells PaperTrail whether versions should be saved in the current
     # request.
     def set_paper_trail_enabled_for_request
-      ::PaperTrail.enabled_for_controller = paper_trail_enabled_for_request if ::PaperTrail.enabled?
+      return unless ::PaperTrail.enabled?
+      if ::Gem::Version.new(::PaperTrail::VERSION) >= ::Gem::Version.new('9')
+        ::PaperTrail.request.enabled = paper_trail_enabled_for_request
+      else
+        ::PaperTrail.enabled_for_controller = paper_trail_enabled_for_request
+      end
     end
   end
 end

@@ -8,6 +8,7 @@ Breaking Changes
 
 Added
 
+- Support for PaperTrail 9
 - PaperTrail::Sinatra.gem_version
 
 Fixed
