@@ -10,7 +10,7 @@ AllCops:
   Exclude:
     # This is where travis CI installs our bundle. If we don't exclude it,
     # travis will try to lint all of our dependencies XD
-    - spec/gemfiles/vendor/bundle/**/*
+    - gemfiles/vendor/bundle/**/*
 
   # Set to lowest supported version
   TargetRubyVersion: 2.2
