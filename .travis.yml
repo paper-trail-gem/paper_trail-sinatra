@@ -13,16 +13,22 @@ gemfile:
   - gemfiles/pt8_sinatra2.rb
   - gemfiles/pt9_sinatra1.rb
   - gemfiles/pt9_sinatra2.rb
+  - gemfiles/pt10_sinatra1.rb
+  - gemfiles/pt10_sinatra2.rb
 language: ruby
 matrix:
   exclude:
-    # PT 9 requires ruby >= 2.3
+    # PT 9+ requires ruby >= 2.3
     - rvm: 2.2.9
       gemfile: gemfiles/pt9_sinatra1.rb
     - rvm: 2.2.9
       gemfile: gemfiles/pt9_sinatra2.rb
+    - rvm: 2.2.9
+      gemfile: gemfiles/pt10_sinatra1.rb
+    - rvm: 2.2.9
+      gemfile: gemfiles/pt10_sinatra2.rb
 
-    # We only test ruby 2.3 against PT 9. Lower versions of PT are tested
+    # We only test ruby 2.3 against PT 9+. Lower versions of PT are tested
     # against ruby 2.2.
     - rvm: 2.3.7
       gemfile: gemfiles/pt7_sinatra1.rb
