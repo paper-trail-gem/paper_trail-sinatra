@@ -19,6 +19,20 @@ Fixed
 
 - None
 
+## 0.6.0 (2018-12-17)
+
+Breaking Changes
+
+- None
+
+Added
+
+- Support for PaperTrail 10
+
+Fixed
+
+- None
+
 ## 0.5.0 (2018-05-08)
 
 Breaking Changes
