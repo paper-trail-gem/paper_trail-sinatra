@@ -24,14 +24,12 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "activesupport", [">= 4.2", "< 6"]
 
-  # Why constrain bundler? Is there a better way?
-  spec.add_dependency "bundler", "~> 1.13"
-
   # This gem should not be used with PT < 7 because both define
   # `::PaperTrail::Sinatra`.
   spec.add_dependency "paper_trail", [">= 7", "< 11"]
 
   spec.add_dependency "sinatra", [">= 1.0.0", "< 3"]
+  spec.add_development_dependency "bundler", [">= 1.13", "< 3"]
   spec.add_development_dependency "rack-test", "~> 0.6"
   spec.add_development_dependency "rspec", "~> 3.7"
   spec.add_development_dependency "rubocop", "~> 0.55.0"
