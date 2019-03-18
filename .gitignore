@@ -6,7 +6,7 @@
 /coverage/
 /doc/
 /pkg/
-/spec/gemfiles/*.lock
+/gemfiles/*.lock
 /spec/reports/
 /spec/examples.txt
 /tmp/
