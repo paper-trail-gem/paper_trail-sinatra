@@ -19,6 +19,11 @@ Fixed
 
 - None
 
+Dependencies
+
+- Drop support for EoL rubies, < 2.3
+- Drop support for PT < 9
+
 ## 0.6.0 (2018-12-17)
 
 Breaking Changes

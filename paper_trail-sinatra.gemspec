@@ -17,16 +17,13 @@ Gem::Specification.new do |spec|
   end
   spec.executables = []
   spec.require_paths = ["lib"]
-
-  # PT 7 requires ruby >= 2.1.0. We don't technically need the same constraint
-  # in this project, but it's helpful for local development.
-  spec.required_ruby_version = ">= 2.2.0"
+  spec.required_ruby_version = ">= 2.3.0"
 
   spec.add_dependency "activesupport", [">= 4.2", "< 6"]
 
   # This gem should not be used with PT < 7 because both define
   # `::PaperTrail::Sinatra`.
-  spec.add_dependency "paper_trail", [">= 7", "< 11"]
+  spec.add_dependency "paper_trail", [">= 9", "< 11"]
 
   spec.add_dependency "sinatra", [">= 1.0.0", "< 3"]
   spec.add_development_dependency "bundler", [">= 1.13", "< 3"]

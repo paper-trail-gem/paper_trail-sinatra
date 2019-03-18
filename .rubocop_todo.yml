@@ -41,6 +41,9 @@ Style/ExpandPathArguments:
   Exclude:
     - 'paper_trail-sinatra.gemspec'
 
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 # Offense count: 2
 # Cop supports --auto-correct.
 Style/IfUnlessModifier:

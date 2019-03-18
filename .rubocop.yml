@@ -13,7 +13,7 @@ AllCops:
     - gemfiles/vendor/bundle/**/*
 
   # Set to lowest supported version
-  TargetRubyVersion: 2.2
+  TargetRubyVersion: 2.3
 
 Layout/AlignParameters:
   EnforcedStyle: with_fixed_indentation
