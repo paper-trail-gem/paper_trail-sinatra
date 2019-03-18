@@ -19,6 +19,20 @@ Fixed
 
 - None
 
+## 0.6.1 (2019-03-18)
+
+Breaking Changes
+
+- None
+
+Added
+
+- None
+
+Fixed
+
+- None
+
 Dependencies
 
 - Drop support for EoL rubies, < 2.3
