@@ -20,15 +20,14 @@ module PaperTrail
     protected
 
     # Returns the user who is responsible for any changes that occur.
-    # By default this calls `current_user` and returns the result.
+    # By default this calls `current_user#id` and falls back to
+    # `current_user`.
     #
     # Override this method in your controller to call a different
     # method, e.g. `current_person`, or anything you like.
     def user_for_paper_trail
       return unless defined?(current_user)
-      ActiveSupport::VERSION::MAJOR >= 4 ? current_user.try!(:id) : current_user.try(:id)
-    rescue NoMethodError
-      current_user
+      current_user&.id || current_user
     end
 
     # Returns any information about the controller or request that you
