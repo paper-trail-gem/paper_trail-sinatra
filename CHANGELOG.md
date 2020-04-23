@@ -17,6 +17,20 @@ Added
 
 Fixed
 
+- None
+
+## 0.7.0 (2020-04-23)
+
+Breaking Changes
+
+- None
+
+Added
+
+- None
+
+Fixed
+
 - [#11](https://github.com/paper-trail-gem/paper_trail-sinatra/pull/11) - Drop
   `activesupport` dependency, thus allowing `activerecord` 6.0
 
