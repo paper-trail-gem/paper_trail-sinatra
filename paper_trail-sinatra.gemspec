@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
 
   # This gem should not be used with PT < 7 because both define
   # `::PaperTrail::Sinatra`.
-  spec.add_dependency "paper_trail", [">= 9", "< 11"]
+  spec.add_dependency "paper_trail", ">= 9"
 
   spec.add_dependency "sinatra", [">= 1.0.0", "< 3"]
   spec.add_development_dependency "bundler", [">= 1.13", "< 3"]
@@ -31,5 +31,5 @@ Gem::Specification.new do |spec|
 
   # Constraining sqlite3 to 1.3 seems to fix "Gem::LoadError: can't activate
   # sqlite3 (~> 1.3.6), already activated sqlite3-1.4.0"
-  spec.add_development_dependency "sqlite3", "~> 1.3.6"
+  spec.add_development_dependency "sqlite3", "~> 1.4.0"
 end
