@@ -19,6 +19,20 @@ Fixed
 
 - None
 
+## 0.8.0 (2021-01-06)
+
+Breaking Changes
+
+- None
+
+Added
+
+- Support for PaperTrail 11
+
+Fixed
+
+- None
+
 ## 0.7.0 (2020-04-23)
 
 Breaking Changes
