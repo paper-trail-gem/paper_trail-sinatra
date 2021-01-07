@@ -28,8 +28,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rack-test", "~> 0.6"
   spec.add_development_dependency "rspec", "~> 3.7"
   spec.add_development_dependency "rubocop", "~> 0.55.0"
-
-  # Constraining sqlite3 to 1.3 seems to fix "Gem::LoadError: can't activate
-  # sqlite3 (~> 1.3.6), already activated sqlite3-1.4.0"
   spec.add_development_dependency "sqlite3", "~> 1.4.0"
 end
