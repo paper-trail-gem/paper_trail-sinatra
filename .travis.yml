@@ -11,13 +11,14 @@ gemfile:
   - gemfiles/pt9_sinatra2.rb
   - gemfiles/pt10_sinatra1.rb
   - gemfiles/pt10_sinatra2.rb
+  - gemfiles/pt11_sinatra1.rb
+  - gemfiles/pt11_sinatra2.rb
 language: ruby
 
 # For ruby compatibility, we usually only test the highest and lowest supported
 # versions.
 rvm:
-  - 2.6.2
-  - 2.3.8
+  - 2.6.6
 
 script:
   - bundle exec rubocop
