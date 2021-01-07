@@ -29,7 +29,6 @@ if active_record_version < Gem::Version.new("5.0.0")
 end
 require "rack/test"
 require "paper_trail/config"
-PaperTrail::Config.instance.track_associations = false
 require "paper_trail"
 require "paper_trail/sinatra"
 require_relative "models/widget"
