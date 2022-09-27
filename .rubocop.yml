@@ -11,21 +11,29 @@ AllCops:
     # This is where travis CI installs our bundle. If we don't exclude it,
     # travis will try to lint all of our dependencies XD
     - gemfiles/vendor/bundle/**/*
+  NewCops: enable
+  SuggestExtensions: false
 
   # Set to lowest supported version
   TargetRubyVersion: 2.3
 
-Layout/AlignParameters:
-  EnforcedStyle: with_fixed_indentation
-
 Layout/DotPosition:
   EnforcedStyle: trailing
+
+# The Ruby Style Guide recommends to "Limit lines to 80 characters."
+# (https://github.com/bbatsov/ruby-style-guide#80-character-limits)
+# Please aim for 80, but up to 100 is OK.
+Layout/LineLength:
+  Max: 100
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
 Layout/MultilineOperationIndentation:
   EnforcedStyle: indented
+
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
 
 # Use exactly one space on each side of an operator. Do not align operators
 # because it makes the code harder to edit, and makes lines unnecessarily long.
@@ -39,12 +47,6 @@ Metrics/BlockLength:
 # Not a useful metric compared to, e.g. `AbcSize`.
 Metrics/ClassLength:
   Enabled: false
-
-# The Ruby Style Guide recommends to "Limit lines to 80 characters."
-# (https://github.com/bbatsov/ruby-style-guide#80-character-limits)
-# Please aim for 80, but up to 100 is OK.
-Metrics/LineLength:
-  Max: 100
 
 # The number of lines in a method is not a useful metric compared to `AbcSize`.
 # It's common to have very long methods (> 50 lines) which are quite simple. For
@@ -69,7 +71,7 @@ Naming/HeredocDelimiterNaming:
 # Too subtle to lint.
 # Two-letter param names are OK. Consider `send_email(to:, cc:)`.
 # Even one-letter names are OK. Consider `draw_point(x, y)`.
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
   Enabled: false
 
 # Please use semantic style, e.g. `do` when there's a side-effect, else `{}`.
@@ -98,6 +100,13 @@ Style/GuardClause:
 # Rubocop used to support this level of configuration, but no longer does.
 Style/IfUnlessModifier:
   Enabled: false
+
+# Usage of OpenStruct is discouraged since it's breaking some performance
+# optimizations in the Ruby VM. But when using it in tests, these can be
+# ignored.
+Style/OpenStructUse:
+  Exclude:
+    - spec/**/*
 
 # The Ruby Style Guide does not prescribe a particular quote character, only
 # that a project should pick one and be consistent. The decision has no
