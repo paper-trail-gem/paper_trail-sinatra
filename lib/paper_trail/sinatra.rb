@@ -27,6 +27,7 @@ module PaperTrail
     # method, e.g. `current_person`, or anything you like.
     def user_for_paper_trail
       return unless defined?(current_user)
+
       current_user&.id || current_user
     end
 
@@ -66,6 +67,7 @@ module PaperTrail
     # Tells PaperTrail who is responsible for any changes that occur.
     def set_paper_trail_whodunnit
       return unless ::PaperTrail.enabled?
+
       if ::Gem::Version.new(::PaperTrail::VERSION) >= ::Gem::Version.new('9')
         ::PaperTrail.request.whodunnit = user_for_paper_trail
       else
@@ -77,6 +79,7 @@ module PaperTrail
     # alongside any changes that occur.
     def set_paper_trail_request_info
       return unless ::PaperTrail.enabled?
+
       if ::Gem::Version.new(::PaperTrail::VERSION) >= ::Gem::Version.new('9')
         ::PaperTrail.request.controller_info = info_for_paper_trail
       else
@@ -88,6 +91,7 @@ module PaperTrail
     # request.
     def set_paper_trail_enabled_for_request
       return unless ::PaperTrail.enabled?
+
       if ::Gem::Version.new(::PaperTrail::VERSION) >= ::Gem::Version.new('9')
         ::PaperTrail.request.enabled = paper_trail_enabled_for_request
       else
