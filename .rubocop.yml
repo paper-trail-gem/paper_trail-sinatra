@@ -8,9 +8,9 @@ inherit_from: .rubocop_todo.yml
 
 AllCops:
   Exclude:
-    # This is where travis CI installs our bundle. If we don't exclude it,
-    # travis will try to lint all of our dependencies XD
-    - gemfiles/vendor/bundle/**/*
+    # This is where Github Actions installs our bundle. If we don't exclude it,
+    # rubocop will try to lint all of our dependencies XD
+    - 'vendor/**/*'
   NewCops: enable
   SuggestExtensions: false
 

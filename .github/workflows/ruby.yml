@@ -1,0 +1,105 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# This workflow will download a prebuilt Ruby version, install dependencies and run tests with Rake
+# For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
+
+name: Ruby
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  test-pt9:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        gemfile:
+          - 'gemfiles/pt9_sinatra1.rb'
+          - 'gemfiles/pt9_sinatra2.rb'
+        ruby-version: ['2.7']
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Setup DB
+      run: mkdir db && touch db/test.sqlite3 && sqlite3 db/test.sqlite3 ".read spec/create_db.sql"
+    - name: Run tests
+      run: bundle exec rspec
+    - name: Rubocop
+      run: bundle exec rubocop
+
+  test-pt10:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        gemfile:
+          - 'gemfiles/pt10_sinatra1.rb'
+          - 'gemfiles/pt10_sinatra2.rb'
+        ruby-version: ['2.7']
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Setup DB
+      run: mkdir db && touch db/test.sqlite3 && sqlite3 db/test.sqlite3 ".read spec/create_db.sql"
+    - name: Run tests
+      run: bundle exec rspec
+    - name: Rubocop
+      run: bundle exec rubocop
+
+  test-pt11:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        gemfile:
+          - 'gemfiles/pt11_sinatra1.rb'
+          - 'gemfiles/pt11_sinatra2.rb'
+        ruby-version: ['2.7']
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Setup DB
+      run: mkdir db && touch db/test.sqlite3 && sqlite3 db/test.sqlite3 ".read spec/create_db.sql"
+    - name: Run tests
+      run: bundle exec rspec
+    - name: Rubocop
+      run: bundle exec rubocop
+  test-pt13:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        gemfile:
+          - 'gemfiles/pt13_sinatra2.rb'
+          - 'gemfiles/pt13_sinatra3.rb'
+        ruby-version: ['2.7', '3.0']
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Setup DB
+      run: mkdir db && touch db/test.sqlite3 && sqlite3 db/test.sqlite3 ".read spec/create_db.sql"
+    - name: Run tests
+      run: bundle exec rspec
+    - name: Rubocop
+      run: bundle exec rubocop
