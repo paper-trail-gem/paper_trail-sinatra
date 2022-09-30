@@ -4,7 +4,7 @@ Register this module inside your Sinatra application to gain access to
 controller-level methods used by PaperTrail.
 
 To configure PaperTrail for usage with [Sinatra][1], your `Sinatra` app must be
-using `ActiveRecord` 3, 4, 5, or 6.
+using `ActiveRecord`.
 
 It is recommended to use the
 [Sinatra ActiveRecord Extension][2] or something similar for managing your
