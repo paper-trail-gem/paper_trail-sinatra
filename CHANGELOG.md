@@ -19,6 +19,20 @@ Fixed
 
 - None
 
+## 0.9.0 (2021-10-02)
+
+Breaking Changes
+
+- None
+
+Added
+
+- Support for Sinatra 3
+
+Fixed
+
+- None
+
 ## 0.8.0 (2021-01-06)
 
 Breaking Changes
