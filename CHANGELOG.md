@@ -13,21 +13,7 @@ Breaking Changes
 
 Added
 
-- None
-
-Fixed
-
-- None
-
-## 0.9.0 (2021-10-02)
-
-Breaking Changes
-
-- None
-
-Added
-
-- Support for Sinatra 3
+- Support for Sinatra 4
 
 Fixed
 
