@@ -13,7 +13,7 @@ Breaking Changes
 
 Added
 
-- None
+- Support for Sinatra 4
 
 Fixed
 
