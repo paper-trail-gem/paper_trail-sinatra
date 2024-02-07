@@ -89,6 +89,7 @@ jobs:
         gemfile:
           - 'gemfiles/pt13_sinatra2.rb'
           - 'gemfiles/pt13_sinatra3.rb'
+          - 'gemfiles/pt13_sinatra4.rb'
         ruby-version: ['2.7', '3.0']
     steps:
     - uses: actions/checkout@v3
