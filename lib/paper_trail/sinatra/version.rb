@@ -1,6 +1,6 @@
 module PaperTrail
   module Sinatra
-    VERSION = "0.9.0"
+    VERSION = "0.10.0"
 
     # Added in 0.5.0
     # @api public

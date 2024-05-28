@@ -13,6 +13,20 @@ Breaking Changes
 
 Added
 
+- None
+
+Fixed
+
+- None
+
+## 0.10.0 (2024-05-28)
+
+Breaking Changes
+
+- None
+
+Added
+
 - Support for Sinatra 4
 
 Fixed
